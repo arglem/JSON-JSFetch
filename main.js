@@ -1,3 +1,4 @@
+
 let post = [];
 let comment = [];
 let user = [];
@@ -53,5 +54,7 @@ document.querySelector('fetchPosts').addEventListener('click', () => {
     data.array.forEach(e => {
     });
   };
+
+
 
 
