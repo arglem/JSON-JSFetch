@@ -1,43 +1,57 @@
-document.getElementById('fetchPosts').addEventListener('click', () => {
+let post = [];
+let comment = [];
+let user = [];
+
+document.querySelector('fetchPosts').addEventListener('click', () => {
     fetch('https://jsonplaceholder.typicode.com/posts') // verileri almak için kullanıldı
       .then(response => response.json())
       .then(posts => {
-        displayData(posts);
+      post = posts;
+      displayData(post)
       })
       .catch(error => { // olası bir hatayı yakalamak için eklendi
         console.error('Hata:', error); 
       });
   });
 
-  document.getElementById('fetchComments').addEventListener('click', () => {
+  document.querySelector('fetchComments').addEventListener('click', () => {
     const postId = 1; // Post ID'sine ulaşım
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
       .then(response => response.json())
       .then(comments => {
-        displayData(comments);
+        comment = comments;
+        displayData(comment);
+        
       })
+    
       .catch(error => {
         console.error('Hata:', error);
       });
   });
 
-  document.getElementById('fetchUsers').addEventListener('click', () => {
+  document.querySelector('fetchUsers').addEventListener('click', () => {
     fetch('https://jsonplaceholder.typicode.com/users') // kullanıcılara ulaşım
       .then(response => response.json())
       .then(users => {
-        displayData(users);
+        user = users;
+        displayData(user);
+      
       })
       .catch(error => {
         console.error('Hata:', error);
       });
   });
  
-  document.getElementById('clear').addEventListener('click', () => {
-    const resultDiv = document.getElementById('result');
+  document.querySelector('clear').addEventListener('click', () => {
+    const resultDiv = document.querySelector('result');
     resultDiv.innerHTML = ''; // Sonuçları temizler
   });
 
   function displayData(data) { // verilerin sayfada görüntülenmesini sağlar
-    const resultDiv = document.getElementById('result');
+    const resultDiv = document.querySelector('result');
     resultDiv.innerHTML = JSON.stringify(data, null, 2);
-  }
+    data.array.forEach(e => {
+    });
+  };
+
+
